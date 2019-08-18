@@ -173,6 +173,7 @@ const Server = async () => {
       ctx.redirect(`/?error=${error}`)
     },
     async finish(ctx, token, scope, user, next) {
+      console.log(user.name, user.login, user.company)
       await next()
     },
   })
@@ -180,7 +181,22 @@ const Server = async () => {
 }
 ```
 ```
-[+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY
+[+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY 
+http://localhost:5003 
+{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect1&amp;state=8870">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect1&amp;state=8870</a>.',
+  headers: 
+   { 'set-cookie': 
+      [ 'koa:sess=eyJzdGF0ZSI6ODg3MCwiX2V4cGlyZSI6MTU2NjIwMDEzMDU1MSwiX21heEFnZSI6ODY0MDAwMDB9; path=/; expires=Mon, 19 Aug 2019 07:35:30 GMT; httponly',
+        'koa:sess.sig=1PkC5dcW4edf8-EC4uyuWdKUMho; path=/; expires=Mon, 19 Aug 2019 07:35:30 GMT; httponly' ],
+     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect1&state=8870',
+     'content-type': 'text/html; charset=utf-8',
+     'content-length': '361',
+     date: 'Sun, 18 Aug 2019 07:35:30 GMT',
+     connection: 'close' },
+  statusCode: 302,
+  statusMessage: 'Found' }
+
+ > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect1&state=8870
 ```
 
 <p align="center"><a href="#table-of-contents">

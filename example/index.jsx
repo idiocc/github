@@ -1,3 +1,4 @@
+import { aqt } from 'rqt'
 /* yarn example/ */
 import dotenv from '@demimonde/dotenv'
 import render from '@depack/render'
@@ -40,6 +41,7 @@ const Server = async () => {
       ctx.redirect(`/?error=${error}`)
     },
     async finish(ctx, token, scope, user, next) {
+      console.log(user.name, user.login, user.company)
       await next()
     },
   })
@@ -49,11 +51,11 @@ const Server = async () => {
 /* end example */
 
 (async () => {
-  // const { app, url } = await Server()
-  // console.log(url, '')
-  // const res = await aqt(`${url}/auth/linkedin`)
-  // console.log(res)
-  // const { headers: { location } } = res
-  // console.log('\n > Redirect to Dialog %s', location)
-  // if (!process.env.LIVE) await app.destroy()
+  const { app, url } = await Server()
+  console.log(url, '')
+  const res = await aqt(`${url}/auth/github`)
+  console.log(res)
+  const { headers: { location } } = res
+  console.log('\n > Redirect to Dialog %s', location)
+  if (!process.env.LIVE) await app.destroy()
 })()
