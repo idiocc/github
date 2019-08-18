@@ -1,6 +1,6 @@
 {
   "name": "@idio/github",
-  "version": "0.0.0-pre",
+  "version": "1.0.0",
   "description": "The GitHub OAuth Flow For Idio Web Server.",
   "main": "build/index.js",
   "module": "src/index.js",
