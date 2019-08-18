@@ -28,10 +28,10 @@
       <arg string name="scope">
         The scopes which the user authorised the app to access.
       </arg>
-      <arg type="_idio.GithubUser" name="scope">
+      <arg type="_idio.GithubUser" name="user">
         The scopes which the user authorised the app to access.
       </arg>
-      <arg type="function()" name="next"></arg>
+      <arg type="function()" name="next">Calls next middleware.</arg>
       The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`.
     </function>
 
@@ -45,7 +45,7 @@
       <arg string name="description">
         The explaination of the error.
       </arg>
-      <arg type="function()" name="next"></arg>
+      <arg type="function()" name="next">Calls next middleware.</arg>
       The function to be called in case of error. If not specified, the middleware will throw an internal server error.
     </function>
 

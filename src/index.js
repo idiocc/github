@@ -10,7 +10,7 @@ import { stringify } from 'querystring'
  * @param {string} [config.path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
  * @param {string} [config.scope] The scope to ask permissions for. No scope by default.
  * @param {_goa.Middleware} [config.session] The configured session middleware in case the `session` property is not globally available on the context.
- * @param {(ctx: _goa.Context, token: string, scope: string, scope: _idio.GithubUser, next: function()) => !Promise} [config.finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
+ * @param {(ctx: _goa.Context, token: string, scope: string, user: _idio.GithubUser, next: function()) => !Promise} [config.finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
  * @param {(ctx: _goa.Context, error: string, description: string, next: function()) => !Promise} [config.error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
  */
 export default function github(app, config = {}) {
@@ -197,7 +197,7 @@ const getRedirect = ({ protocol, host }, path) => {
  * @prop {string} [path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
  * @prop {string} [scope] The scope to ask permissions for. No scope by default.
  * @prop {_goa.Middleware} [session] The configured session middleware in case the `session` property is not globally available on the context.
- * @prop {(ctx: _goa.Context, token: string, scope: string, scope: _idio.GithubUser, next: function()) => !Promise} [finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
+ * @prop {(ctx: _goa.Context, token: string, scope: string, user: _idio.GithubUser, next: function()) => !Promise} [finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
  * @prop {(ctx: _goa.Context, error: string, description: string, next: function()) => !Promise} [error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
  */
 

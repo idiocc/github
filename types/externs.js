@@ -46,7 +46,7 @@ _idio.GithubOAuthConfig.prototype.session
  * The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
  * @type {(function(_goa.Context,string,string,_idio.GithubUser,function()): !Promise)|undefined}
  */
-_idio.GithubOAuthConfig.prototype.finish = function(ctx, token, scope, scope, next) {}
+_idio.GithubOAuthConfig.prototype.finish = function(ctx, token, scope, user, next) {}
 /**
  * The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
  * @type {(function(_goa.Context,string,string,function()): !Promise)|undefined}
