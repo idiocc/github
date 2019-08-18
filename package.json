@@ -15,16 +15,16 @@
     "b": "alamode src -o build -s",
     "d": "yarn-s d1 externs",
     "d1": "typal src -u",
-    "externs": "typal types/externs.js -e",
+    "externs": "typal types/externs/* -e",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
     "build",
     "src",
-    "types/externs.js"
+    "types/externs"
   ],
-  "externs": "externs.js",
+  "externs": ["types/externs/user.js", "types/externs/externs.js"],
   "repository": {
     "type": "git",
     "url": "git://github.com/idiocc/github.git"

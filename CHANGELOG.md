@@ -1,5 +1,9 @@
 ## 18 August 2019
 
+### [1.0.4](https://github.com/idiocc/github/compare/v1.0.3...v1.0.4)
+
+- [fix] Split externs by server and frontend.
+
 ### [1.0.3](https://github.com/idiocc/github/compare/v1.0.2...v1.0.3)
 
 - [fix] Fix the `finish` function signature.
