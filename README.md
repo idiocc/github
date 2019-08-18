@@ -91,7 +91,7 @@ The GitHub OAuth Login Routes For The Idio Web Server.
  </tr>
  <tr>
   <td rowSpan="3" align="center">session</td>
-  <td><em>Middleware</em></td>
+  <td><em>_goa.Middleware</em></td>
   <td rowSpan="3">-</td>
  </tr>
  <tr></tr>
@@ -102,7 +102,7 @@ The GitHub OAuth Login Routes For The Idio Web Server.
  </tr>
  <tr>
   <td rowSpan="3" align="center">finish</td>
-  <td colSpan="2"><em>(ctx: _goa.Context, token: string, scope: string, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: _goa.Context, token: string, scope: string, scope: _idio.GithubUser, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
@@ -111,6 +111,7 @@ The GitHub OAuth Login Routes For The Idio Web Server.
    <kbd><strong>ctx*</strong></kbd> <em><code>_goa.Context</code></em>: The app context.<br/>
    <kbd><strong>token*</strong></kbd> <em><code>string</code></em>: The exchanged token.<br/>
    <kbd><strong>scope*</strong></kbd> <em><code>string</code></em>: The scopes which the user authorised the app to access.<br/>
+   <kbd><strong>scope*</strong></kbd> <em><code>_idio.GithubUser</code></em>: The scopes which the user authorised the app to access.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>
   </td>
  </tr>
