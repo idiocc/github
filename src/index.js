@@ -4,7 +4,7 @@ import { stringify } from 'querystring'
 /**
  * The GitHub OAuth Login Routes For The Idio Web Server.
  * @param {_goa.Application} [app] The Koa/Goa app.
- * @param {GithubOAuthConfig} [config] Options for the program.
+ * @param {_idio.GithubOAuthConfig} [config] Options for the program.
  * @param {string} config.client_id The app's client id.
  * @param {string} config.client_secret The app's client secret.
  * @param {string} [config.path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
@@ -107,7 +107,7 @@ const getInfo = async (token) => {
 
 /**
  * Request data from github API.
- * @param {QueryConfig} config Options for Query.
+ * @param {Object} config Options for Query.
  * @param {string} config.token The access token with appropriate permissions.
  * @param {string} config.path The API endpoint.
  * @param {*} config.data The object containing data to query the API with.
@@ -185,9 +185,13 @@ const getRedirect = ({ protocol, host }, path) => {
   return p
 }
 
-/* documentary types/index.xml */
+/* documentary types/index.xml namespace */
 /**
- * @typedef {Object} GithubOAuthConfig `＠record` Options for the program.
+ * @typedef {import('@typedefs/goa').Middleware} _goa.Middleware
+ * @typedef {import('@typedefs/goa').Context} _goa.Context
+ * @typedef {import('@typedefs/goa').Application} _goa.Application
+ * @typedef {_idio.GithubOAuthConfig} GithubOAuthConfig `＠record` Options for the program.
+ * @typedef {Object} _idio.GithubOAuthConfig `＠record` Options for the program.
  * @prop {string} client_id The app's client id.
  * @prop {string} client_secret The app's client secret.
  * @prop {string} [path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
@@ -232,10 +236,4 @@ const getRedirect = ({ protocol, host }, path) => {
  * @prop {number} following 0
  * @prop {string} created_at "2008-01-14T04:33:35Z"
  * @prop {string} updated_at "2008-01-14T04:33:35Z"
- */
-
-/**
- * @typedef {import('@typedefs/goa').Application} _goa.Application
- * @typedef {import('@typedefs/goa').Middleware} _goa.Middleware
- * @typedef {import('@typedefs/goa').Context} _goa.Context
  */

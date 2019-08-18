@@ -16,3 +16,11 @@ import github from '@idio/github'
 %FORK example%
 
 %~%
+
+## GithubUser
+
+If authorisation was successful, the server will make a request to GitHub API at `/user` path with the token, to get user's public info. This information can then be accessed in the `finish` function passed in the config.
+
+<typedef narrow>types/user.xml</typedef>
+
+%~%

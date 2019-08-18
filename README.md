@@ -12,8 +12,9 @@ yarn add -E @idio/github
 
 - [Table Of Contents](#table-of-contents)
 - [API](#api)
-- [`githubOAuth(app, config): void`](#githuboauthapp-_goaapplicationconfig-_idiogithuboauthconfig-void)
-  * [`_idio.GithubOAuthConfig`](#type-_idiogithuboauthconfig)
+- [`githubOAuth(app, config): void`](#githuboauthapp-_goaapplicationconfig-githuboauthconfig-void)
+  * [`GithubOAuthConfig`](#type-githuboauthconfig)
+- [GithubUser](#githubuser)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents">
@@ -32,13 +33,16 @@ import github from '@idio/github'
   <img src="/.documentary/section-breaks/1.svg?sanitize=true">
 </a></p>
 
-## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: _goa.Application,`<br/>&nbsp;&nbsp;`config: _idio.GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
+## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: _goa.Application,`<br/>&nbsp;&nbsp;`config: GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
 The GitHub OAuth Login Routes For The Idio Web Server.
 
- - <kbd><strong>app*</strong></kbd> <em>`_goa.Application`</em>: The Goa/Koa Application.
- - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-_idiogithuboauthconfig" title="Options for the program.">_idio.GithubOAuthConfig</a></code></em>: Options for the oauth.
+ - <kbd><strong>app*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" title="The application interface.">_goa.Application</a></code></em>: The Goa/Koa Application.
+ - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-githuboauthconfig" title="Options for the program.">GithubOAuthConfig</a></code></em>: Options for the oauth.
 
-<strong><a name="type-_idiogithuboauthconfig">`_idio.GithubOAuthConfig`</a></strong>: Options for the program.
+<undefined></undefined>
+
+
+__<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the program.
 <table>
  <thead><tr>
   <th>Name</th>
@@ -91,7 +95,7 @@ The GitHub OAuth Login Routes For The Idio Web Server.
  </tr>
  <tr>
   <td rowSpan="3" align="center">session</td>
-  <td><em>_goa.Middleware</em></td>
+  <td><em><a href="https://github.com/idiocc/goa/wiki/Application#type-_goamiddleware" title="The function to handle requests which can be installed with the .use method.">_goa.Middleware</a></em></td>
   <td rowSpan="3">-</td>
  </tr>
  <tr></tr>
@@ -102,28 +106,28 @@ The GitHub OAuth Login Routes For The Idio Web Server.
  </tr>
  <tr>
   <td rowSpan="3" align="center">finish</td>
-  <td colSpan="2"><em>(ctx: _goa.Context, token: string, scope: string, scope: _idio.GithubUser, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, token: string, scope: string, scope: <a href="#type-githubuser">GithubUser</a>, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to <code>/</code>.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code>_goa.Context</code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a></code></em>: The app context.<br/>
    <kbd><strong>token*</strong></kbd> <em><code>string</code></em>: The exchanged token.<br/>
    <kbd><strong>scope*</strong></kbd> <em><code>string</code></em>: The scopes which the user authorised the app to access.<br/>
-   <kbd><strong>scope*</strong></kbd> <em><code>_idio.GithubUser</code></em>: The scopes which the user authorised the app to access.<br/>
+   <kbd><strong>scope*</strong></kbd> <em><code><a href="#type-githubuser">GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>
   </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">error</td>
-  <td colSpan="2"><em>(ctx: _goa.Context, error: string, description: string, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, error: string, description: string, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to be called in case of error. If not specified, the middleware will throw an internal server error.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code>_goa.Context</code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a></code></em>: The app context.<br/>
    <kbd><strong>error*</strong></kbd> <em><code>string</code></em>: The error type.<br/>
    <kbd><strong>description*</strong></kbd> <em><code>string</code></em>: The explaination of the error.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>
@@ -181,6 +185,332 @@ const Server = async () => {
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/2.svg?sanitize=true">
+</a></p>
+
+## GithubUser
+
+If authorisation was successful, the server will make a request to GitHub API at `/user` path with the token, to get user's public info. This information can then be accessed in the `finish` function passed in the config.
+
+__<a name="type-githubuser">`GithubUser`</a>__
+<table>
+ <thead><tr>
+  <th>Name</th>
+  <th>Type &amp; Description</th>
+ </tr></thead>
+ <tr>
+  <td rowSpan="3" align="center"><strong>login*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "octocat"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>id*</strong></td>
+  <td><em>number</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   1
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>node_id*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "MDQ6VXNlcjE="
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>avatar_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://github.com/images/error/octocat_happy.gif"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>gravatar_id*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   ""
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>html_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://github.com/octocat"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>followers_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/followers"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>following_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/following{/other_user}"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>gists_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/gists{/gist_id}"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>starred_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/starred{/owner}{/repo}"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>subscriptions_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/subscriptions"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>organizations_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/orgs"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>repos_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/repos"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>events_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/events{/privacy}"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>received_events_url*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://api.github.com/users/octocat/received_events"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>type*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "User"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>site_admin*</strong></td>
+  <td><em>boolean</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   false
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>name*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "monalisa octocat"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>company*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "GitHub"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>blog*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "https://github.com/blog"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>location*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "San Francisco"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>email*</strong></td>
+  <td><em>?string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   Publicly visible email address. <code>octocat＠github.com</code> or <code>null</code>.
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>hireable*</strong></td>
+  <td><em>boolean</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   false
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>bio*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "There once was..."
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>public_repos*</strong></td>
+  <td><em>number</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   2
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>public_gists*</strong></td>
+  <td><em>number</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   1
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>followers*</strong></td>
+  <td><em>number</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   20
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>following*</strong></td>
+  <td><em>number</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   0
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>created_at*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "2008-01-14T04:33:35Z"
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>updated_at*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   "2008-01-14T04:33:35Z"
+  </td>
+ </tr>
+</table>
+
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/3.svg?sanitize=true">
 </a></p>
 
 ## Copyright

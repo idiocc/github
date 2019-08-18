@@ -1,5 +1,5 @@
 <types namespace="_idio">
-  <type name="GithubUser">
+  <type name="GithubUser" noToc>
       <prop string name="login">
         "octocat"
       </prop>

@@ -11,10 +11,10 @@
     "mask": "yarn t test/mask",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "doc": "NODE_DEBUG=doc doc -o README.md -n _idio",
     "b": "alamode src -o build -s",
     "d": "yarn-s d1 externs",
-    "d1": "typal src",
+    "d1": "typal src -u",
     "externs": "typal externs.js -e",
     "build": "yarn-s d b doc",
     "e": "alanode"
@@ -48,6 +48,7 @@
     "documentary": "^1.32.1",
     "eslint-config-artdeco": "1.0.1",
     "rqt": "^4.0.0",
+    "typal": "^1.22.0",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"
   }

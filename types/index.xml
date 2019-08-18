@@ -1,4 +1,8 @@
 <types namespace="_idio">
+  <import from="@typedefs/goa" ns="_goa" name="Middleware" link="https://github.com/idiocc/goa/wiki/Application#type-_goamiddleware" desc="The function to handle requests which can be installed with the .use method."/>
+  <import from="@typedefs/goa" ns="_goa" name="Context" link="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" desc="The context object for each request."/>
+  <import from="@typedefs/goa" ns="_goa" name="Application" link="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" desc="The application interface."/>
+
   <type record name="GithubOAuthConfig" desc="Options for the program.">
     <prop string name="client_id">
       The app's client id.
