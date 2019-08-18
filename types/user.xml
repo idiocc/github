@@ -1,0 +1,97 @@
+<types namespace="_idio">
+  <type name="GithubUser">
+      <prop string name="login">
+        "octocat"
+      </prop>
+      <prop number name="id">
+        1
+      </prop>
+      <prop string name="node_id">
+        "MDQ6VXNlcjE="
+      </prop>
+      <prop string name="avatar_url">
+        "https://github.com/images/error/octocat_happy.gif"
+      </prop>
+      <prop string name="gravatar_id">
+        ""
+      </prop>
+      <prop string name="url">
+        "https://api.github.com/users/octocat"
+      </prop>
+      <prop string name="html_url">
+        "https://github.com/octocat"
+      </prop>
+      <prop string name="followers_url">
+        "https://api.github.com/users/octocat/followers"
+      </prop>
+      <prop string name="following_url">
+        "https://api.github.com/users/octocat/following{/other_user}"
+      </prop>
+      <prop string name="gists_url">
+        "https://api.github.com/users/octocat/gists{/gist_id}"
+      </prop>
+      <prop string name="starred_url">
+        "https://api.github.com/users/octocat/starred{/owner}{/repo}"
+      </prop>
+      <prop string name="subscriptions_url">
+        "https://api.github.com/users/octocat/subscriptions"
+      </prop>
+      <prop string name="organizations_url">
+        "https://api.github.com/users/octocat/orgs"
+      </prop>
+      <prop string name="repos_url">
+        "https://api.github.com/users/octocat/repos"
+      </prop>
+      <prop string name="events_url">
+        "https://api.github.com/users/octocat/events{/privacy}"
+      </prop>
+      <prop string name="received_events_url">
+        "https://api.github.com/users/octocat/received_events"
+      </prop>
+      <prop string name="type">
+        "User"
+      </prop>
+      <prop boolean name="site_admin">
+        false
+      </prop>
+      <prop string name="name">
+        "monalisa octocat"
+      </prop>
+      <prop string name="company">
+        "GitHub"
+      </prop>
+      <prop string name="blog">
+        "https://github.com/blog"
+      </prop>
+      <prop string name="location">
+        "San Francisco"
+      </prop>
+      <prop type="?string" name="email">
+        Publicly visible email address. `octocat＠github.com` or `null`.
+      </prop>
+      <prop boolean name="hireable">
+        false
+      </prop>
+      <prop string name="bio">
+        "There once was..."
+      </prop>
+      <prop number name="public_repos">
+        2
+      </prop>
+      <prop number name="public_gists">
+        1
+      </prop>
+      <prop number name="followers">
+        20
+      </prop>
+      <prop number name="following">
+        0
+      </prop>
+      <prop string name="created_at">
+        "2008-01-14T04:33:35Z"
+      </prop>
+      <prop string name="updated_at">
+        "2008-01-14T04:33:35Z"
+      </prop>
+  </type>
+</types>

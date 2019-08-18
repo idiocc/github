@@ -1,10 +1,52 @@
-<types namespace="_@idio/github">
-  <type name="Config" desc="Options for the program.">
-    <prop boolean name="shouldRun" default="true">
-      A boolean option.
+<types namespace="_idio">
+  <type record name="GithubOAuthConfig" desc="Options for the program.">
+    <prop string name="client_id">
+      The app's client id.
     </prop>
-    <prop string name="text">
-      A text to return.
+    <prop string name="client_secret">
+      The app's client secret.
+    </prop>
+    <prop string name="path" default="/auth/github">
+      The server path to start the login flaw at and use for redirect (`${path}/redirect`).
+    </prop>
+
+    <prop string name="scope" opt>
+      The scope to ask permissions for. No scope by default.
+    </prop>
+
+    <function async name="finish" default="setSession; redirect;">
+      <arg name="ctx" type="_goa.Context">
+        The app context.
+      </arg>
+      <arg string name="token">
+        The exchanged token.
+      </arg>
+      <arg string name="scope">
+        The scopes which the user authorised the app to access.
+      </arg>
+      <arg type="_idio.GithubUser" name="scope">
+        The scopes which the user authorised the app to access.
+      </arg>
+      <arg type="function()" name="next"></arg>
+      The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`.
+    </function>
+
+    <function async name="error" default="throw;">
+      <arg name="ctx" type="_goa.Context">
+        The app context.
+      </arg>
+      <arg string name="error">
+        The error type.
+      </arg>
+      <arg string name="description">
+        The explaination of the error.
+      </arg>
+      <arg type="function()" name="next"></arg>
+      The function to be called in case of error. If not specified, the middleware will throw an internal server error.
+    </function>
+
+    <prop opt name="session" type="_goa.Middleware">
+      The configured session middleware in case the `session` property is not globally available on the context.
     </prop>
   </type>
 </types>

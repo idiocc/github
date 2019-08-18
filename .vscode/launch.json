@@ -29,13 +29,14 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Example",
-      "program": "${workspaceFolder}/example/index.js",
+      "program": "${workspaceFolder}/node_modules/.bin/alanode",
       "env": {
         "NODE_DEBUG": "@idio/github",
+        // "DEBUG": "koa-session:context,koa-session",
       },
       "console": "integratedTerminal",
       "args": [
-        "example/example.js"
+        "example"
       ],
       "skipFiles": [
         "<node_internals>/**/*.js"

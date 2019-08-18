@@ -1,0 +1,11 @@
+<types namespace="_idio">
+  <method name="githubOAuth">
+    <arg name="app" type="_goa.Application">
+      The Goa/Koa Application.
+    </arg>
+    <arg type="_idio.GithubOAuthConfig" name="config">
+      Options for the oauth.
+    </arg>
+    The GitHub OAuth Login Routes For The Idio Web Server.
+  </method>
+</types>

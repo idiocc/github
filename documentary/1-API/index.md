@@ -8,16 +8,9 @@ import github from '@idio/github'
 
 %~%
 
-```## github
-[
-  ["arg1", "string"],
-  ["arg2?", "boolean"]
-]
-```
+<typedef noArgTypesInToc>types/api.xml</typedef>
 
-Call this function to get the result you want.
-
-%TYPEDEF types/index.xml%
+<typedef narrow>types/index.xml</typedef>
 
 %EXAMPLE: example, ../src => @idio/github%
 %FORK example%
