@@ -15,14 +15,14 @@
     "b": "alamode src -o build -s",
     "d": "yarn-s d1 externs",
     "d1": "typal src -u",
-    "externs": "typal externs.js -e",
+    "externs": "typal types/externs.js -e",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
     "build",
     "src",
-    "externs.js"
+    "types/externs.js"
   ],
   "externs": "externs.js",
   "repository": {
