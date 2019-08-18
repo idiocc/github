@@ -207,7 +207,7 @@ const getRedirect = ({ protocol, host }, path) => {
  * @typedef {Object} _idio.GithubUser Public user information
  * @prop {string} login `octocat`
  * @prop {number} id 1
- * @prop {string} node_id MDQ6VXNlcjE=`
+ * @prop {string} node_id `MDQ6VXNlcjE=`
  * @prop {string} avatar_url `https://github.com/images/error/octocat_happy.gif`
  * @prop {string} gravatar_id ``
  * @prop {string} url `https://api.github.com/users/octocat`

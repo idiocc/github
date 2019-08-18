@@ -224,7 +224,7 @@ __<a name="type-githubuser">`GithubUser`</a>__: Public user information
  <tr></tr>
  <tr>
   <td>
-   MDQ6VXNlcjE=`
+   <code>MDQ6VXNlcjE=</code>
   </td>
  </tr>
  <tr>
