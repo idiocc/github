@@ -45,7 +45,7 @@ export default function github(app, config = {}) {
       ctx.session.state = state
       await ctx.session.manuallyCommit()
     }
-    const redirect_uri = getRedirect(ctx, path) + 1
+    const redirect_uri = getRedirect(ctx, path)
     const u = githubDialogUrl({
       redirect_uri,
       client_id,
