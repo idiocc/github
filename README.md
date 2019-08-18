@@ -106,7 +106,7 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">finish</td>
-  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, token: string, scope: string, scope: <a href="#type-githubuser">GithubUser</a>, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, token: string, scope: string, scope: <a href="#type-githubuser" title="Public user information">GithubUser</a>, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
@@ -115,7 +115,7 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
    <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a></code></em>: The app context.<br/>
    <kbd><strong>token*</strong></kbd> <em><code>string</code></em>: The exchanged token.<br/>
    <kbd><strong>scope*</strong></kbd> <em><code>string</code></em>: The scopes which the user authorised the app to access.<br/>
-   <kbd><strong>scope*</strong></kbd> <em><code><a href="#type-githubuser">GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
+   <kbd><strong>scope*</strong></kbd> <em><code><a href="#type-githubuser" title="Public user information">GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>
   </td>
  </tr>
@@ -191,7 +191,7 @@ const Server = async () => {
 
 If authorisation was successful, the server will make a request to GitHub API at `/user` path with the token, to get user's public info. This information can then be accessed in the `finish` function passed in the config.
 
-__<a name="type-githubuser">`GithubUser`</a>__
+__<a name="type-githubuser">`GithubUser`</a>__: Public user information
 <table>
  <thead><tr>
   <th>Name</th>
@@ -204,7 +204,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "octocat"
+   <code>octocat</code>
   </td>
  </tr>
  <tr>
@@ -224,7 +224,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "MDQ6VXNlcjE="
+   MDQ6VXNlcjE=`
   </td>
  </tr>
  <tr>
@@ -234,7 +234,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://github.com/images/error/octocat_happy.gif"
+   <code>https://github.com/images/error/octocat_happy.gif</code>
   </td>
  </tr>
  <tr>
@@ -244,7 +244,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   ""
+   <code></code>
   </td>
  </tr>
  <tr>
@@ -254,7 +254,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat"
+   <code>https://api.github.com/users/octocat</code>
   </td>
  </tr>
  <tr>
@@ -264,7 +264,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://github.com/octocat"
+   <code>https://github.com/octocat</code>
   </td>
  </tr>
  <tr>
@@ -274,7 +274,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/followers"
+   <code>https://api.github.com/users/octocat/followers</code>
   </td>
  </tr>
  <tr>
@@ -284,7 +284,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/following{/other_user}"
+   <code>https://api.github.com/users/octocat/following{/other_user}</code>
   </td>
  </tr>
  <tr>
@@ -294,7 +294,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/gists{/gist_id}"
+   <code>https://api.github.com/users/octocat/gists{/gist_id}</code>
   </td>
  </tr>
  <tr>
@@ -304,7 +304,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/starred{/owner}{/repo}"
+   <code>https://api.github.com/users/octocat/starred{/owner}{/repo}</code>
   </td>
  </tr>
  <tr>
@@ -314,7 +314,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/subscriptions"
+   <code>https://api.github.com/users/octocat/subscriptions</code>
   </td>
  </tr>
  <tr>
@@ -324,7 +324,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/orgs"
+   <code>https://api.github.com/users/octocat/orgs</code>
   </td>
  </tr>
  <tr>
@@ -334,7 +334,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/repos"
+   <code>https://api.github.com/users/octocat/repos</code>
   </td>
  </tr>
  <tr>
@@ -344,7 +344,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/events{/privacy}"
+   <code>https://api.github.com/users/octocat/events{/privacy}</code>
   </td>
  </tr>
  <tr>
@@ -354,7 +354,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://api.github.com/users/octocat/received_events"
+   <code>https://api.github.com/users/octocat/received_events</code>
   </td>
  </tr>
  <tr>
@@ -364,7 +364,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "User"
+   <code>User</code>
   </td>
  </tr>
  <tr>
@@ -384,7 +384,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "monalisa octocat"
+   <code>monalisa octocat</code>
   </td>
  </tr>
  <tr>
@@ -394,7 +394,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "GitHub"
+   <code>GitHub</code>
   </td>
  </tr>
  <tr>
@@ -404,7 +404,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "https://github.com/blog"
+   <code>https://github.com/blog</code>
   </td>
  </tr>
  <tr>
@@ -414,7 +414,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "San Francisco"
+   <code>San Francisco</code>
   </td>
  </tr>
  <tr>
@@ -444,7 +444,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "There once was..."
+   <code>There once was...</code>
   </td>
  </tr>
  <tr>
@@ -494,7 +494,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "2008-01-14T04:33:35Z"
+   <code>2008-01-14T04:33:35Z</code>
   </td>
  </tr>
  <tr>
@@ -504,7 +504,7 @@ __<a name="type-githubuser">`GithubUser`</a>__
  <tr></tr>
  <tr>
   <td>
-   "2008-01-14T04:33:35Z"
+   <code>2008-01-14T04:33:35Z</code>
   </td>
  </tr>
 </table>
