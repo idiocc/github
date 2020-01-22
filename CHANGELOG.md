@@ -1,5 +1,9 @@
 ## 22 January 2020
 
+### [1.3.0](https://github.com/idiocc/github/compare/v1.2.0...v1.3.0)
+
+- [feature] Specify `redirectPath` so that multiple redirects can be used for the same OAuth app.
+
 ### [1.2.0](https://github.com/idiocc/github/compare/v1.1.0...v1.2.0)
 
 - [package] Compile package with _Depack_.
