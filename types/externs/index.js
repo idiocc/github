@@ -33,17 +33,17 @@ _idio.GithubOAuthConfig.prototype.path
 _idio.GithubOAuthConfig.prototype.scope
 /**
  * The configured session middleware in case the `session` property is not globally available on the context.
- * @type {(!_idio.Middleware)|undefined}
+ * @type {(!_goa.Middleware)|undefined}
  */
 _idio.GithubOAuthConfig.prototype.session
 /**
  * The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
- * @type {(function(_idio.Context,string,string,!_idio.GithubUser,function()): !Promise)|undefined}
+ * @type {(function(_goa.Context,string,string,!_idio.GithubUser,function()): !Promise)|undefined}
  */
 _idio.GithubOAuthConfig.prototype.finish = function(ctx, token, scope, user, next) {}
 /**
  * The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
- * @type {(function(!_idio.Context,string,string,function()): !Promise)|undefined}
+ * @type {(function(!_goa.Context,string,string,function()): !Promise)|undefined}
  */
 _idio.GithubOAuthConfig.prototype.error = function(ctx, error, description, next) {}
 

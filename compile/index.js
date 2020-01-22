@@ -8,9 +8,9 @@ const { _github } = require('./')
  * @param {string} config.client_secret The app's client secret.
  * @param {string} [config.path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
  * @param {string} [config.scope] The scope to ask permissions for. No scope by default.
- * @param {!_idio.Middleware} [config.session] The configured session middleware in case the `session` property is not globally available on the context.
- * @param {(ctx: _idio.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [config.finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
- * @param {(ctx: !_idio.Context, error: string, description: string, next: function()) => !Promise} [config.error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
+ * @param {!_goa.Middleware} [config.session] The configured session middleware in case the `session` property is not globally available on the context.
+ * @param {(ctx: _goa.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [config.finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
+ * @param {(ctx: !_goa.Context, error: string, description: string, next: function()) => !Promise} [config.error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
  */
 function github(app, config) {
   return _github(app, config)
@@ -20,17 +20,17 @@ module.exports = github
 
 /* typal types/index.xml namespace */
 /**
- * @typedef {import('@typedefs/idio').Middleware} _idio.Middleware
- * @typedef {import('@typedefs/idio').Context} _idio.Context
+ * @typedef {import('@typedefs/goa').Middleware} _goa.Middleware
+ * @typedef {import('@typedefs/goa').Context} _goa.Context
  * @typedef {_idio.GithubOAuthConfig} GithubOAuthConfig `＠record` Options for the program.
  * @typedef {Object} _idio.GithubOAuthConfig `＠record` Options for the program.
  * @prop {string} client_id The app's client id.
  * @prop {string} client_secret The app's client secret.
  * @prop {string} [path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
  * @prop {string} [scope] The scope to ask permissions for. No scope by default.
- * @prop {!_idio.Middleware} [session] The configured session middleware in case the `session` property is not globally available on the context.
- * @prop {(ctx: _idio.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
- * @prop {(ctx: !_idio.Context, error: string, description: string, next: function()) => !Promise} [error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
+ * @prop {!_goa.Middleware} [session] The configured session middleware in case the `session` property is not globally available on the context.
+ * @prop {(ctx: _goa.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
+ * @prop {(ctx: !_goa.Context, error: string, description: string, next: function()) => !Promise} [error="throw;"] The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
  */
 
 /* typal types/user.xml namespace */

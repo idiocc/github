@@ -1,6 +1,6 @@
 <types namespace="_idio">
-  <import from="@typedefs/idio" ns="_idio" name="Middleware" />
-  <import from="@typedefs/idio" ns="_idio" name="Context" />
+  <import from="@typedefs/goa" ns="_goa" name="Middleware" />
+  <import from="@typedefs/goa" ns="_goa" name="Context" />
 
   <record name="GithubOAuthConfig" desc="Options for the program.">
     <prop string name="client_id">
@@ -18,7 +18,7 @@
     </prop>
 
     <function async name="finish" default="setSession; redirect;">
-      <arg name="ctx" type="_idio.Context">
+      <arg name="ctx" type="_goa.Context">
         The app context.
       </arg>
       <arg string name="token">
@@ -35,7 +35,7 @@
     </function>
 
     <function async name="error" default="throw;">
-      <arg name="ctx" type="!_idio.Context">
+      <arg name="ctx" type="!_goa.Context">
         The app context.
       </arg>
       <arg string name="error">
@@ -48,7 +48,7 @@
       The function to be called in case of error. If not specified, the middleware will throw an internal server error.
     </function>
 
-    <prop opt name="session" type="!_idio.Middleware">
+    <prop opt name="session" type="!_goa.Middleware">
       The configured session middleware in case the `session` property is not globally available on the context.
     </prop>
   </record>

@@ -27,7 +27,7 @@ function $github(app, config) {
   }
 
   /**
-   * @type {_idio.Middleware}
+   * @type {!_idio.Middleware}
    */
   const start = async (ctx) => {
     let state
@@ -47,7 +47,7 @@ function $github(app, config) {
   }
 
   /**
-   * @type {_idio.Middleware}
+   * @type {!_idio.Middleware}
    */
   const redirect = async (ctx, next) => {
     const redirect_uri = getRedirect(ctx, path)
@@ -65,7 +65,7 @@ function $github(app, config) {
       const ed = ctx.query['error_description']
       // closure bug
       // const { 'error': e, 'error_description': ed } = ctx.query
-      await error(ctx, e, ed, next)
+      await error(/** @type {!_goa.Context} */ (ctx), e, ed, next)
       return
     }
     const code = ctx.query['code']
@@ -79,7 +79,7 @@ function $github(app, config) {
       state,
     })
     const data = await getInfo(access_token)
-    await finish(ctx, access_token, s, data, next)
+    await finish(/** @type {!_goa.Context} */ (ctx), access_token, s, data, next)
   }
 
   /** @type {!_idio.Middleware} */
