@@ -1,9 +1,8 @@
 <types namespace="_idio">
-  <import from="@typedefs/goa" ns="_goa" name="Middleware" link="https://github.com/idiocc/goa/wiki/Application#type-_goamiddleware" desc="The function to handle requests which can be installed with the .use method."/>
-  <import from="@typedefs/goa" ns="_goa" name="Context" link="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" desc="The context object for each request."/>
-  <import from="@typedefs/goa" ns="_goa" name="Application" link="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" desc="The application interface."/>
+  <import from="@typedefs/idio" ns="_idio" name="Middleware" />
+  <import from="@typedefs/idio" ns="_idio" name="Context" />
 
-  <type record name="GithubOAuthConfig" desc="Options for the program.">
+  <record name="GithubOAuthConfig" desc="Options for the program.">
     <prop string name="client_id">
       The app's client id.
     </prop>
@@ -19,7 +18,7 @@
     </prop>
 
     <function async name="finish" default="setSession; redirect;">
-      <arg name="ctx" type="_goa.Context">
+      <arg name="ctx" type="_idio.Context">
         The app context.
       </arg>
       <arg string name="token">
@@ -28,7 +27,7 @@
       <arg string name="scope">
         The scopes which the user authorised the app to access.
       </arg>
-      <arg type="_idio.GithubUser" name="user">
+      <arg type="!_idio.GithubUser" name="user">
         The scopes which the user authorised the app to access.
       </arg>
       <arg type="function()" name="next">Calls next middleware.</arg>
@@ -36,21 +35,21 @@
     </function>
 
     <function async name="error" default="throw;">
-      <arg name="ctx" type="_goa.Context">
+      <arg name="ctx" type="!_idio.Context">
         The app context.
       </arg>
       <arg string name="error">
         The error type.
       </arg>
       <arg string name="description">
-        The explaination of the error.
+        The explanation of the error.
       </arg>
       <arg type="function()" name="next">Calls next middleware.</arg>
       The function to be called in case of error. If not specified, the middleware will throw an internal server error.
     </function>
 
-    <prop opt name="session" type="_goa.Middleware">
+    <prop opt name="session" type="!_idio.Middleware">
       The configured session middleware in case the `session` property is not globally available on the context.
     </prop>
-  </type>
+  </record>
 </types>

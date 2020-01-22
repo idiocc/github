@@ -1,11 +1,13 @@
 <types namespace="_idio">
+  <import from="@typedefs/goa" ns="_goa" name="Application" />
+
   <method name="githubOAuth">
-    <arg name="app" type="_goa.Application">
+    <arg name="app" type="!_goa.Application">
       The Goa/Koa Application.
     </arg>
-    <arg type="_idio.GithubOAuthConfig" name="config">
-      Options for the oauth.
+    <arg type="!_idio.GithubOAuthConfig" name="config">
+      Options for the middleware.
     </arg>
-    The GitHub OAuth Login Routes For The Idio Web Server.
+    The GitHub OAuth Login Routes For The Idio Web Server. Two routes will be configured: one to redirect to GitHub to start authentication, and one to handle the callback from GitHub. They will be installed on the app automatically.
   </method>
 </types>

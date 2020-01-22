@@ -2,15 +2,40 @@
 # yarn lockfile v1
 
 
+"@artdeco/clean-stack@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.1.1.tgz#0a68b9a061b5076ebaf948c150ea26d09c1e753f"
+  integrity sha512-q5lO3vGUo0WgkSqzgzjL0HQdA9t2HzQqZISuVuQWMh9xqLuiLFP/ZTsxFc8vpMl7mNpGk7Mm0OeyFQ+Evrp0Cw==
+
 "@demimonde/dotenv@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@demimonde/dotenv/-/dotenv-1.1.0.tgz#4043eda753d117ca793a0810bc6d2ec17c749758"
   integrity sha512-Guh4n1Z82gTetkyHj5bHP2vmXy8ViKsesXBg8XcJPFaJdcPsDDJtVYtsEzvL2sP5k+ManovEYyHiW4l0yAiSTA==
 
+"@depack/nodejs@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@depack/nodejs/-/nodejs-1.1.4.tgz#36195f33fef7a6b9b1f93a043a52a87fac087729"
+  integrity sha512-vtmNtylOPNjFkQHOgC1M8Ru9c211FgtD3sG3KGS9dvlcHDUAiNoJ52gVwOep5Tkp0I4qmwPx3oyTV6OwKchmlg==
+
 "@depack/render@^1.3.4":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@depack/render/-/render-1.3.4.tgz#f9931e745aa700ad3e5d13419b1e4222ff8f5a2c"
   integrity sha512-6DMJe/j/pyq0wc38UGY9dCIcqenSA9Pl+FiftPK3w6xGeCzi/Y1vlqKEpsEm2u1AgqZ/uXai9UHiGRZWZB2ggQ==
+
+"@externs/goa@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@externs/goa/-/goa-1.0.1.tgz#28e21477ee63ab6a9e4a263ef5543fcb2d742f7b"
+  integrity sha512-ZRMwQ/TV16Koxhrp2vrrYkbnuYoljc2gloi8THIdZgin+TCxLVpdkvqpzegm2A+xKBYWzMubiH2grVFwdkWnzA==
+
+"@externs/idio@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@externs/idio/-/idio-0.0.3.tgz#23ad79857d13592caa075ecdc06d8365dbe3b5cd"
+  integrity sha512-eIn+5U0iXR9awW48cJFXEtM2QfQgGgv9FQdZ7YFXjayMkZQML8M5InIcD2OipnZ/ho01eQW7UAz2+kQYM+tcnQ==
+
+"@externs/nodejs@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@externs/nodejs/-/nodejs-1.5.0.tgz#88ff9e7a03c53d19101ee49768e598ff0f39c9ad"
+  integrity sha512-2J+FRDjGfKKldTQ5YqLmhQ04/sA9swTQ6OTtPzo4xhg41u1+eiufciXiqW6u3UXEcmm413a27NakgnLbzfp0wQ==
 
 "@idio/idio@^1.1.2":
   version "1.1.2"
@@ -20,10 +45,20 @@
     mime-db "^1.43.0"
     text-decoding "^1.0.0"
 
+"@rqt/aqt@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@rqt/aqt/-/aqt-1.4.0.tgz#5b50461f4b448ed426725cc3c887077c40addcce"
+  integrity sha512-b9DlzIG6mZiCxGT33YenHW3ffPu1rkruEZnhGDWbRN3Hnfe5TgMUlXZJT+bppmHWpn7BuYbwuh+6kFnlzETZ6w==
+
 "@typedefs/goa@^0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.1.5.tgz#d833cb6abc917647d0bf97a2f12055ad7b0daffa"
   integrity sha512-PD5o1zjDID6WVxo16E9sus1dNEAoFcu2gtc6jrn0JHmXMSDt04e9NuOdAg/Inrt+KJnVj3vRhu95AY2Wny9mrg==
+
+"@typedefs/idio@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@typedefs/idio/-/idio-0.0.3.tgz#656a669c420bd4503d96b21e484de0b23597d401"
+  integrity sha512-qZ49xFgcc+/Rqyd2ZbO4PfJ2FysWIgEV2RG1qXkpnPB2i0rs66rcvCZXrcAQF+pX3iItGqyGD2QvrMEFUVZF6A==
 
 "@zoroaster/assert@^1.0.2":
   version "1.0.2"
@@ -40,6 +75,22 @@ alamode@^3.0.0, alamode@^3.3.0:
   resolved "https://registry.yarnpkg.com/alamode/-/alamode-3.3.0.tgz#5a73ebb8eae847934f747d67c2680698061b7bbe"
   integrity sha512-/Xi0rZ0HAyobAIi8DJQMeFF3kRrr15PGuYRwvxmQaOqSO3WJgXOsmhL6sZQuvD/okZztzujMxMA+21WOD2rYyQ==
 
+catchment@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/catchment/-/catchment-3.3.0.tgz#e57eb70183d6a75ee71da0cb8ec2e76ac01317d2"
+  integrity sha512-PACm54CBCUZv1uEOMyNiB6i0kkDMdDN0+VYXIQAaeZMDcjudyPccgpYLWQfGCwCW/Q9SOfD6MyBLmxL3qh7V3A==
+  dependencies:
+    "@artdeco/clean-stack" "^1.1.1"
+    erotic "^2.1.0"
+
+depack@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/depack/-/depack-1.0.1.tgz#4b3c2a9bff91cf31466d148101336a8329db7f09"
+  integrity sha512-W1etv1UIcdoRDqN8JzwcD8T1ZUylbppmqMQulu54YMoTSMAVmqcp8lnR17og8RtvHFlI41qpi58SMgnU3C6hPQ==
+  dependencies:
+    "@depack/nodejs" "^1.1.4"
+    "@externs/nodejs" "^1.5.0"
+
 documentary@^1.35.9:
   version "1.35.9"
   resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.9.tgz#f0003b04c4a54325198e1189f81ba88aad87e21a"
@@ -48,6 +99,13 @@ documentary@^1.35.9:
     alamode "^3.3.0"
     preact "8.5.3"
     typal "^1.24.19"
+
+erotic@^2.1.0, erotic@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/erotic/-/erotic-2.1.1.tgz#97f20c2d6e7fd2ec6f7996823009d3ac8ae7157f"
+  integrity sha512-S1ns+uibigdXxxzqiO5VNZw3d0YNrVb4jZ7OUAklO4722/ytp+nta6txsUhYmnIEI0TF7jjXNjGvcmw0I/Rs7A==
+  dependencies:
+    "@artdeco/clean-stack" "^1.1.1"
 
 eslint-config-artdeco@1.0.1:
   version "1.0.1"
