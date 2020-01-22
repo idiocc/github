@@ -1,0 +1,14 @@
+{
+  "_idio.githubOAuth": {
+    "link": "https://github.com/idiocc/github#githuboauthapp-_goaapplicationconfig-githuboauthconfig-void",
+    "description": "The GitHub OAuth Login Routes For The Idio Web Server."
+  },
+  "_idio.GithubOAuthConfig": {
+    "link": "https://github.com/idiocc/github#type-githuboauthconfig",
+    "description": "Options for the program."
+  },
+  "_idio.GithubUser": {
+    "link": "https://github.com/idiocc/github#type-githubuser",
+    "description": "Public user information"
+  }
+}

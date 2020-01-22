@@ -1,11 +1,11 @@
 # @idio/github
 
-[![npm version](https://badge.fury.io/js/%40idio%2Fgithub.svg)](https://npmjs.org/package/@idio/github)
+[![npm version](https://badge.fury.io/js/%40idio%2Fgithub.svg)](https://www.npmjs.com/package/@idio/github)
 
-`@idio/github` is The GitHub OAuth Flow For Idio Web Server.
+`@idio/github` is The GitHub OAuth Flow For the [Idio Web Server](https://github.com/idiocc/idio).
 
 ```sh
-yarn add -E @idio/github
+yarn add @idio/github
 ```
 
 ## Table Of Contents
@@ -38,9 +38,6 @@ The GitHub OAuth Login Routes For The Idio Web Server.
 
  - <kbd><strong>app*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" title="The application interface.">_goa.Application</a></code></em>: The Goa/Koa Application.
  - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-githuboauthconfig" title="Options for the program.">GithubOAuthConfig</a></code></em>: Options for the oauth.
-
-<undefined></undefined>
-
 
 __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the program.
 <table>
@@ -183,20 +180,20 @@ const Server = async () => {
 ```
 [+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY 
 http://localhost:5003 
-{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=1167">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=1167</a>.',
+{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=8812">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=8812</a>.',
   headers: 
    { 'set-cookie': 
-      [ 'koa:sess=eyJzdGF0ZSI6MTE2NywiX2V4cGlyZSI6MTU2NjIwOTEwMjM3NCwiX21heEFnZSI6ODY0MDAwMDB9; path=/; expires=Mon, 19 Aug 2019 10:05:02 GMT; httponly',
-        'koa:sess.sig=ml_KhoVkSpHGUwH-zrL-AzAWzJQ; path=/; expires=Mon, 19 Aug 2019 10:05:02 GMT; httponly' ],
-     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=1167',
+      [ 'koa:sess=eyJzdGF0ZSI6ODgxMiwiX2V4cGlyZSI6MTU3OTc3NzI4Mjg1NiwiX21heEFnZSI6ODY0MDAwMDB9; path=/; expires=Thu, 23 Jan 2020 11:01:22 GMT; httponly',
+        'koa:sess.sig=evlz5iw0Lpzt0Sz0wVtBXRTe77c; path=/; expires=Thu, 23 Jan 2020 11:01:22 GMT; httponly' ],
+     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=8812',
      'content-type': 'text/html; charset=utf-8',
      'content-length': '359',
-     date: 'Sun, 18 Aug 2019 10:05:02 GMT',
+     date: 'Wed, 22 Jan 2020 11:01:22 GMT',
      connection: 'close' },
   statusCode: 302,
   statusMessage: 'Found' }
 
- > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=1167
+ > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=8812
 ```
 
 <p align="center"><a href="#table-of-contents">

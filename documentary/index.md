@@ -2,10 +2,10 @@
 
 %NPM: @idio/github%
 
-`@idio/github` is The GitHub OAuth Flow For Idio Web Server.
+`@idio/github` is The GitHub OAuth Flow For the [Idio Web Server](https://github.com/idiocc/idio).
 
 ```sh
-yarn add -E @idio/github
+yarn add @idio/github
 ```
 
 ## Table Of Contents
