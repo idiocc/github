@@ -6,7 +6,8 @@ const { _github } = require('./github')
  * @param {!_idio.GithubOAuthConfig} config Options for the program.
  * @param {string} config.client_id The app's client id.
  * @param {string} config.client_secret The app's client secret.
- * @param {string} [config.path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
+ * @param {string} [config.path="/auth/github"] The server path to start the login flaw at. Default `/auth/github`.
+ * @param {string} [config.redirectPath] The redirect path (must start with `/`). If not specified, `${path}/redirect` will be used.
  * @param {string} [config.scope] The scope to ask permissions for. No scope by default.
  * @param {!_goa.Middleware} [config.session] The configured session middleware in case the `session` property is not globally available on the context.
  * @param {(ctx: _idio.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [config.finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
@@ -26,7 +27,8 @@ module.exports = github
  * @typedef {Object} _idio.GithubOAuthConfig `＠record` Options for the program.
  * @prop {string} client_id The app's client id.
  * @prop {string} client_secret The app's client secret.
- * @prop {string} [path="/auth/github"] The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
+ * @prop {string} [path="/auth/github"] The server path to start the login flaw at. Default `/auth/github`.
+ * @prop {string} [redirectPath] The redirect path (must start with `/`). If not specified, `${path}/redirect` will be used.
  * @prop {string} [scope] The scope to ask permissions for. No scope by default.
  * @prop {!_goa.Middleware} [session] The configured session middleware in case the `session` property is not globally available on the context.
  * @prop {(ctx: _idio.Context, token: string, scope: string, user: !_idio.GithubUser, next: function()) => !Promise} [finish="setSession; redirect;"] The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.

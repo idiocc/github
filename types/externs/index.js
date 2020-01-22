@@ -22,10 +22,15 @@ _idio.GithubOAuthConfig.prototype.client_id
  */
 _idio.GithubOAuthConfig.prototype.client_secret
 /**
- * The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
+ * The server path to start the login flaw at. Default `/auth/github`.
  * @type {string|undefined}
  */
 _idio.GithubOAuthConfig.prototype.path
+/**
+ * The redirect path (must start with `/`). If not specified, `${path}/redirect` will be used.
+ * @type {string|undefined}
+ */
+_idio.GithubOAuthConfig.prototype.redirectPath
 /**
  * The scope to ask permissions for. No scope by default.
  * @type {string|undefined}

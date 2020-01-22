@@ -11,6 +11,7 @@ function $github(app, config) {
     client_id = '',
     client_secret = '',
     path = '/auth/github',
+    redirectPath = `${path}/redirect`,
     scope = '',
     error = (ctx, err, description) => {
       throw new Error(description)
@@ -37,7 +38,7 @@ function $github(app, config) {
     ctx.session['githib-state'] = state
     await ctx.session.manuallyCommit()
 
-    const redirect_uri = getRedirect(ctx, path)
+    const redirect_uri = getRedirect(ctx, redirectPath)
     const u = githubDialogUrl({
       redirect_uri,
       client_id,
@@ -51,7 +52,7 @@ function $github(app, config) {
    * @type {!_idio.Middleware}
    */
   const redirect = async (ctx, next) => {
-    const redirect_uri = getRedirect(ctx, path)
+    const redirect_uri = getRedirect(ctx, redirectPath)
     let state
     if (!ctx.session) throw new Error('Cannot finish github middleware because session was not started.')
     state = ctx.query['state']
@@ -94,7 +95,7 @@ function $github(app, config) {
     if (ctx.path == path) {
       if (session) await session(ctx, () => {})
       await start(ctx)
-    } else if (ctx.path.startsWith(`${path}/redirect`)) {
+    } else if (ctx.path.startsWith(redirectPath)) {
       if (session) await session(ctx, () => {})
       await redirect(ctx, next)
     } else return next()
@@ -209,13 +210,12 @@ const githubDialogUrl = ({
   return `https://www.github.com/login/oauth/authorize?${s}`
 }
 
-const getRedirect = ({ protocol, host }, path) => {
+const getRedirect = ({ protocol, host }, redirectPath) => {
   const parts = [
     /\.ngrok\.io$/.test(host) ? 'https' : protocol,
     '://',
     host,
-    path,
-    '/redirect',
+    redirectPath,
   ]
   const p = parts.join('')
   return p

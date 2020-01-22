@@ -10,7 +10,10 @@
       The app's client secret.
     </prop>
     <prop string name="path" default="/auth/github">
-      The server path to start the login flaw at and use for redirect (`${path}/redirect`).
+      The server path to start the login flaw at.
+    </prop>
+    <prop string name="redirectPath" opt>
+      The redirect path (must start with `/`). If not specified, `${path}/redirect` will be used.
     </prop>
 
     <prop string name="scope" opt>
