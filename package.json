@@ -44,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/idiocc/github/issues"
   },
-  "homepage": "https://github.com/idiocc/github#readme",
+  "homepage": "https://www.idio.cc",
   "devDependencies": {
     "@demimonde/dotenv": "^1.1.0",
     "@depack/render": "^1.3.4",
