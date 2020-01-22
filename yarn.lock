@@ -37,6 +37,11 @@
   resolved "https://registry.yarnpkg.com/@externs/nodejs/-/nodejs-1.5.0.tgz#88ff9e7a03c53d19101ee49768e598ff0f39c9ad"
   integrity sha512-2J+FRDjGfKKldTQ5YqLmhQ04/sA9swTQ6OTtPzo4xhg41u1+eiufciXiqW6u3UXEcmm413a27NakgnLbzfp0wQ==
 
+"@goa/session@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@goa/session/-/session-3.1.1.tgz#b0e86ca918436defc7fa17b930d75d568047565d"
+  integrity sha512-SKOHWMS/+cHGhg5zRwpt5ZpK2lK74tSZX9ktfQnH0uKIgPCHlCxjFZnFTxEMjuOzNRjatecB2wz7tlbF6TzQnQ==
+
 "@idio/idio@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@idio/idio/-/idio-1.1.2.tgz#cdc47edd02865937a3f70dabac0e6beff0564c3a"

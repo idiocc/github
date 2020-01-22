@@ -1,0 +1,19 @@
+<types namespace="_idio">
+  <record name="GithubExchangeResponse" desc="The response from GitHub for OAuth code exchange request.">
+    <prop string name="error">
+      The error title.
+    </prop>
+    <prop string name="error_description">
+      The error description.
+    </prop>
+    <prop string name="access_token">
+      The received token.
+    </prop>
+    <prop string name="scope">
+      The scope.
+    </prop>
+    <prop string name="token_type">
+      The type, i.e. `bearer`.
+    </prop>
+  </record>
+</types>

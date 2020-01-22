@@ -31,11 +31,12 @@ function $github(app, config) {
    */
   const start = async (ctx) => {
     let state
-    if (ctx.session) {
-      state = Math.floor(Math.random() * 10000)
-      ctx.session['githib-state'] = state
-      await ctx.session.manuallyCommit()
-    }
+    if (!ctx.session) throw new Error('Cannot start github middleware because session was not started.')
+
+    state = Math.floor(Math.random() * 10000)
+    ctx.session['githib-state'] = state
+    await ctx.session.manuallyCommit()
+
     const redirect_uri = getRedirect(ctx, path)
     const u = githubDialogUrl({
       redirect_uri,
@@ -52,14 +53,15 @@ function $github(app, config) {
   const redirect = async (ctx, next) => {
     const redirect_uri = getRedirect(ctx, path)
     let state
-    if (ctx.session) {
-      state = ctx.query['state']
-      if (state != ctx.session['githib-state']) {
-        throw new Error('The state is incorrect.')
-      }
-      ctx.session['githib-state'] = null
-      await ctx.session.manuallyCommit()
+    if (!ctx.session) throw new Error('Cannot finish github middleware because session was not started.')
+    state = ctx.query['state']
+    if (state != ctx.session['githib-state']) {
+      throw new Error('The state is incorrect.')
     }
+    ctx.session['githib-state'] = null
+    // would have to compose if not committing manually
+    await ctx.session.manuallyCommit()
+
     if (ctx.query['error']) {
       const e = ctx.query['error']
       const ed = ctx.query['error_description']
@@ -78,17 +80,22 @@ function $github(app, config) {
       code,
       state,
     })
-    const data = await getInfo(access_token)
+    const p = [
+      getInfo(access_token),
+      ...(/user:email/.test(s) ? [getEmails(access_token)] : []),
+    ]
+    const [data, emails] = await Promise.all(p)
+    if (emails) data.emails = emails
     await finish(/** @type {!_goa.Context} */ (ctx), access_token, s, data, next)
   }
 
   /** @type {!_idio.Middleware} */
   const mw = async (ctx, next) => {
     if (ctx.path == path) {
-      if (session) await session(ctx, next)
-      await start(ctx, next)
+      if (session) await session(ctx, () => {})
+      await start(ctx)
     } else if (ctx.path.startsWith(`${path}/redirect`)) {
-      if (session) await session(ctx, next)
+      if (session) await session(ctx, () => {})
       await redirect(ctx, next)
     } else return next()
   }
@@ -99,12 +106,26 @@ export default $github
 
 /**
  * Gets all available info
+ * @param {string} token
  */
 const getInfo = async (token) => {
-  return await query({
+  const user = /** @type {!_idio.GithubUser} */ (await query({
     token,
     path: 'user',
-  })
+  }))
+  return user
+}
+
+/**
+ * Gets available private emails.
+ * @param {string} token
+ */
+const getEmails = async (token) => {
+  const emails = /** @type {!Array<!_idio.GithubEmail>} */ (await query({
+    token,
+    path: 'user/emails',
+  }))
+  return emails
 }
 
 /**
@@ -135,6 +156,15 @@ export const query = async (config) => {
   return res
 }
 
+/**
+ * Get the oauth token in exchange for access code.
+ * @param {Object} params
+ * @param {string} params.code
+ * @param {string} params.client_id
+ * @param {string} params.client_secret
+ * @param {string} params.redirect_uri
+ * @param {string} params.state
+ */
 const exchange = async ({
   code, client_id, client_secret, redirect_uri, state,
 }) => {
@@ -145,18 +175,20 @@ const exchange = async ({
     'client_secret': client_secret,
     ...(state ? { 'state': state } : {}),
   }
-  const { 'access_token': access_token, 'scope': scope,
-    'token_type': token_type, 'error': error,
-    'error_description': error_description,
-  } = await jqt('https://github.com/login/oauth/access_token', {
+  const {
+    access_token,
+    scope,
+    token_type, error,
+    error_description,
+  } = /** @type {!_idio.GithubExchangeResponse} */ (await jqt('https://github.com/login/oauth/access_token', {
     data,
     headers: {
       'Accept': 'application/json',
     },
-  })
+  }))
   if (error) {
     const err = new Error(error_description)
-    err.type = error
+    err['type'] = error
     throw err
   }
   return { access_token, scope, token_type }
@@ -200,4 +232,16 @@ const getRedirect = ({ protocol, host }, path) => {
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('../')} _idio.githubOAuth
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('../types').GithubExchangeResponse} _idio.GithubExchangeResponse
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('..').GithubEmail} _idio.GithubEmail
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('..').GithubUser} _idio.GithubUser
  */

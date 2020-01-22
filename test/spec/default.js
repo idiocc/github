@@ -8,15 +8,15 @@ const T = {
   'is a function'() {
     equal(typeof github, 'function')
   },
-  async 'calls package without error'() {
-    await github()
-  },
-  async 'gets a link to the fixture'({ FIXTURE }) {
-    const res = await github({
-      text: FIXTURE,
-    })
-    ok(res, FIXTURE)
-  },
+  // async 'calls package without error'() {
+  //   await github()
+  // },
+  // async 'gets a link to the fixture'({ FIXTURE }) {
+  //   const res = await github({
+  //     text: FIXTURE,
+  //   })
+  //   ok(res, FIXTURE)
+  // },
 }
 
 export default T

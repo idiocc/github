@@ -1,6 +1,6 @@
 <types namespace="_idio">
   <import from="@typedefs/goa" ns="_goa" name="Middleware" />
-  <import from="@typedefs/goa" ns="_goa" name="Context" />
+  <import from="@typedefs/idio" ns="_idio" name="Context" />
 
   <record name="GithubOAuthConfig" desc="Options for the program.">
     <prop string name="client_id">
@@ -18,7 +18,7 @@
     </prop>
 
     <function async name="finish" default="setSession; redirect;">
-      <arg name="ctx" type="_goa.Context">
+      <arg name="ctx" type="_idio.Context">
         The app context.
       </arg>
       <arg string name="token">
@@ -35,7 +35,7 @@
     </function>
 
     <function async name="error" default="throw;">
-      <arg name="ctx" type="!_goa.Context">
+      <arg name="ctx" type="!_idio.Context">
         The app context.
       </arg>
       <arg string name="error">

@@ -33,11 +33,11 @@ import github from '@idio/github'
   <img src="/.documentary/section-breaks/1.svg?sanitize=true">
 </a></p>
 
-## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: _goa.Application,`<br/>&nbsp;&nbsp;`config: GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
-The GitHub OAuth Login Routes For The Idio Web Server.
+## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: !_goa.Application,`<br/>&nbsp;&nbsp;`config: !GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
+The GitHub OAuth Login Routes For The Idio Web Server. Two routes will be configured: one to redirect to GitHub to start authentication, and one to handle the callback from GitHub. They will be installed on the app automatically.
 
- - <kbd><strong>app*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" title="The application interface.">_goa.Application</a></code></em>: The Goa/Koa Application.
- - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-githuboauthconfig" title="Options for the program.">GithubOAuthConfig</a></code></em>: Options for the oauth.
+ - <kbd><strong>app*</strong></kbd> <em><code>[!_goa.Application](#type-_goaapplication)</code></em>: The Goa/Koa Application.
+ - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-githuboauthconfig" title="Options for the program.">!GithubOAuthConfig</a></code></em>: Options for the middleware.
 
 __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the program.
 <table>
@@ -92,7 +92,7 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">session</td>
-  <td><em><a href="https://github.com/idiocc/goa/wiki/Application#type-_goamiddleware" title="The function to handle requests which can be installed with the .use method.">_goa.Middleware</a></em></td>
+  <td><em><a href="#type-_goamiddleware">!_goa.Middleware</a></em></td>
   <td rowSpan="3">-</td>
  </tr>
  <tr></tr>
@@ -103,30 +103,30 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">finish</td>
-  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, token: string, scope: string, user: <a href="#type-githubuser" title="Public user information">GithubUser</a>, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="#type-_goacontext">_goa.Context</a>, token: string, scope: string, user: <a href="#type-githubuser" title="Public user information">!GithubUser</a>, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to <code>/</code>.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a></code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="#type-_goacontext">_goa.Context</a></code></em>: The app context.<br/>
    <kbd><strong>token*</strong></kbd> <em><code>string</code></em>: The exchanged token.<br/>
    <kbd><strong>scope*</strong></kbd> <em><code>string</code></em>: The scopes which the user authorised the app to access.<br/>
-   <kbd><strong>user*</strong></kbd> <em><code><a href="#type-githubuser" title="Public user information">GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
+   <kbd><strong>user*</strong></kbd> <em><code><a href="#type-githubuser" title="Public user information">!GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>: Calls next middleware.
   </td>
  </tr>
  <tr>
   <td rowSpan="3" align="center">error</td>
-  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a>, error: string, description: string, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="#type-_goacontext">!_goa.Context</a>, error: string, description: string, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to be called in case of error. If not specified, the middleware will throw an internal server error.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Context#type-_goacontext" title="The context object for each request.">_goa.Context</a></code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="#type-_goacontext">!_goa.Context</a></code></em>: The app context.<br/>
    <kbd><strong>error*</strong></kbd> <em><code>string</code></em>: The error type.<br/>
-   <kbd><strong>description*</strong></kbd> <em><code>string</code></em>: The explaination of the error.<br/>
+   <kbd><strong>description*</strong></kbd> <em><code>string</code></em>: The explanation of the error.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>: Calls next middleware.
   </td>
  </tr>
@@ -180,20 +180,20 @@ const Server = async () => {
 ```
 [+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY 
 http://localhost:5003 
-{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=8812">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=8812</a>.',
+{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=6608">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=6608</a>.',
   headers: 
    { 'set-cookie': 
-      [ 'koa:sess=eyJzdGF0ZSI6ODgxMiwiX2V4cGlyZSI6MTU3OTc3NzI4Mjg1NiwiX21heEFnZSI6ODY0MDAwMDB9; path=/; expires=Thu, 23 Jan 2020 11:01:22 GMT; httponly',
-        'koa:sess.sig=evlz5iw0Lpzt0Sz0wVtBXRTe77c; path=/; expires=Thu, 23 Jan 2020 11:01:22 GMT; httponly' ],
-     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=8812',
+      [ 'koa:sess=eyJnaXRoaWItc3RhdGUiOjY2MDgsIl9leHBpcmUiOjE1Nzk3ODEzODM4NDcsIl9tYXhBZ2UiOjg2NDAwMDAwfQ==; path=/; expires=Thu, 23 Jan 2020 12:09:43 GMT; httponly',
+        'koa:sess.sig=I2p_Ct3Oquav6ZXYL3IjihWLHLw; path=/; expires=Thu, 23 Jan 2020 12:09:43 GMT; httponly' ],
+     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=6608',
      'content-type': 'text/html; charset=utf-8',
      'content-length': '359',
-     date: 'Wed, 22 Jan 2020 11:01:22 GMT',
+     date: 'Wed, 22 Jan 2020 12:09:43 GMT',
      connection: 'close' },
   statusCode: 302,
   statusMessage: 'Found' }
 
- > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=8812
+ > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=6608
 ```
 
 <p align="center"><a href="#table-of-contents">
@@ -528,9 +528,35 @@ __<a name="type-githubuser">`GithubUser`</a>__: Public user information
 
 ## Copyright
 
-(c) [Idio][1] 2019
+GNU Affero General Public License v3.0
 
-[1]: https://idio.cc
+Affero GPL means that you're not allowed to use this middleware on the web unless you release the source code for your application. This is a restrictive license which has the purpose of defending Open Source work and its creators.
+
+Please refer to the [Idio license agreement](https://github.com/idiocc/idio#copyright--license) for more info on dual-licensing. You're allowed to use this middleware without disclosing the source code if you sign up on the [neoluddite.dev](https://neoluddite.dev) package reward scheme.
+
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
+          alt="Art Deco">
+      </a>
+    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2020</th>
+    <th>
+      <a href="https://idio.cc">
+        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio">
+      </a>
+    </th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
+          alt="Tech Nation Visa">
+      </a>
+    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+  </tr>
+</table>
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/-1.svg?sanitize=true">

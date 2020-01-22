@@ -1,5 +1,25 @@
 <types namespace="_idio">
+  <record name="GithubEmail">
+    <prop string name="email">
+      The email address.
+    </prop>
+    <prop boolean name="verified">
+      Whether the email was verified.
+    </prop>
+    <prop boolean name="primary">
+      Whether the email is primary.
+    </prop>
+    <prop string name="visibility">
+      Either `public` or `private`.
+    </prop>
+  </record>
   <type name="GithubUser" desc="Public user information" noToc>
+      <prop type="?string" name="email">
+        Publicly visible email address. `octocat＠github.com` or `null`.
+      </prop>
+      <prop type="!Array<!_idio.GithubEmail>" name="emails">
+        All email addresses accessible if the `user:email` scope was requested.
+      </prop>
       <prop string name="login">
         `octocat`
       </prop>
@@ -65,9 +85,6 @@
       </prop>
       <prop string name="location">
         `San Francisco`
-      </prop>
-      <prop type="?string" name="email">
-        Publicly visible email address. `octocat＠github.com` or `null`.
       </prop>
       <prop boolean name="hireable">
         false

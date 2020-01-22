@@ -9,17 +9,17 @@
     "test": "yarn t test/spec test/mask",
     "spec": "yarn t test/spec",
     "mask": "yarn t test/mask",
-    "test-build": "ALAMODE_ENV=test-build yarn test",
+    "test-compile": "ALAMODE_ENV=test-compile yarn test",
     "lint": "eslint .",
     "lib": "depack src/depack -o compile/github.js -s -a -c --source_map_include_content",
     "doc": "doc -o README.md -n _idio -d -a",
     "b": "alamode src -o build -s",
     "d": "yarn-s template d1 externs",
     "template": "typal compile/template.js -T compile/index.js -t types",
-    "d1": "typal compile/index.js -u -t types",
+    "d1": "typal types/index.js compile/index.js -u -t types",
     "externs": "typal types/externs/* -e",
     "build": "yarn-s d b doc",
-    "e": "alanode"
+    "live": "LIVE=1 alanode example"
   },
   "files": [
     "compile",
@@ -50,6 +50,7 @@
     "@depack/render": "^1.3.4",
     "@externs/goa": "^1.0.1",
     "@externs/idio": "^0.0.3",
+    "@goa/session": "^3.1.1",
     "@idio/idio": "^1.1.2",
     "@rqt/aqt": "^1.4.0",
     "@typedefs/goa": "^0.1.5",
