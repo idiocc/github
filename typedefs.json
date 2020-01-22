@@ -10,5 +10,9 @@
   "_idio.GithubUser": {
     "link": "https://github.com/idiocc/github#type-githubuser",
     "description": "Public user information"
+  },
+  "_idio.GithubEmail": {
+    "link": "https://github.com/idiocc/github#type-githubemail",
+    "description": null
   }
 }

@@ -14,7 +14,7 @@ yarn add @idio/github
 - [API](#api)
 - [`githubOAuth(app, config): void`](#githuboauthapp-_goaapplicationconfig-githuboauthconfig-void)
   * [`GithubOAuthConfig`](#type-githuboauthconfig)
-- [GithubUser](#githubuser)
+  * [`GithubEmail`](#type-githubemail)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents">
@@ -33,10 +33,11 @@ import github from '@idio/github'
   <img src="/.documentary/section-breaks/1.svg?sanitize=true">
 </a></p>
 
-## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: !_goa.Application,`<br/>&nbsp;&nbsp;`config: !GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
+
+## <code><ins>githubOAuth</ins>(</code><sub><br/>&nbsp;&nbsp;`app: _goa.Application,`<br/>&nbsp;&nbsp;`config: !GithubOAuthConfig,`<br/></sub><code>): <i>void</i></code>
 The GitHub OAuth Login Routes For The Idio Web Server. Two routes will be configured: one to redirect to GitHub to start authentication, and one to handle the callback from GitHub. They will be installed on the app automatically.
 
- - <kbd><strong>app*</strong></kbd> <em><code>[!_goa.Application](#type-_goaapplication)</code></em>: The Goa/Koa Application.
+ - <kbd><strong>app*</strong></kbd> <em><code><a href="https://github.com/idiocc/goa/wiki/Application#type-application" title="The application interface.">_goa.Application</a></code></em>: The Goa/Koa Application.
  - <kbd><strong>config*</strong></kbd> <em><code><a href="#type-githuboauthconfig" title="Options for the program.">!GithubOAuthConfig</a></code></em>: Options for the middleware.
 
 __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the program.
@@ -92,7 +93,7 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">session</td>
-  <td><em><a href="#type-_goamiddleware">!_goa.Middleware</a></em></td>
+  <td><em><a href="https://github.com/idiocc/goa/wiki/Application#middlewarectx-contextnext-function-promisevoid" title="The function to handle requests which can be installed with the `.use` method.">!_goa.Middleware</a></em></td>
   <td rowSpan="3">-</td>
  </tr>
  <tr></tr>
@@ -103,13 +104,13 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">finish</td>
-  <td colSpan="2"><em>(ctx: <a href="#type-_goacontext">_goa.Context</a>, token: string, scope: string, user: <a href="#type-githubuser" title="Public user information">!GithubUser</a>, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/idio/wiki/Home#type-context" title="The extension to the standard Goa context with properties set by middleware.">Context</a>, token: string, scope: string, user: <a href="#type-githubuser" title="Public user information">!GithubUser</a>, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to <code>/</code>.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code><a href="#type-_goacontext">_goa.Context</a></code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/idio/wiki/Home#type-context" title="The extension to the standard Goa context with properties set by middleware.">Context</a></code></em>: The app context.<br/>
    <kbd><strong>token*</strong></kbd> <em><code>string</code></em>: The exchanged token.<br/>
    <kbd><strong>scope*</strong></kbd> <em><code>string</code></em>: The scopes which the user authorised the app to access.<br/>
    <kbd><strong>user*</strong></kbd> <em><code><a href="#type-githubuser" title="Public user information">!GithubUser</a></code></em>: The scopes which the user authorised the app to access.<br/>
@@ -118,13 +119,13 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
  </tr>
  <tr>
   <td rowSpan="3" align="center">error</td>
-  <td colSpan="2"><em>(ctx: <a href="#type-_goacontext">!_goa.Context</a>, error: string, description: string, next: function()) => !Promise</em></td>
+  <td colSpan="2"><em>(ctx: <a href="https://github.com/idiocc/idio/wiki/Home#type-context" title="The extension to the standard Goa context with properties set by middleware.">!Context</a>, error: string, description: string, next: function()) => !Promise</em></td>
  </tr>
  <tr></tr>
  <tr>
   <td colSpan="2">
    The function to be called in case of error. If not specified, the middleware will throw an internal server error.<br/>
-   <kbd><strong>ctx*</strong></kbd> <em><code><a href="#type-_goacontext">!_goa.Context</a></code></em>: The app context.<br/>
+   <kbd><strong>ctx*</strong></kbd> <em><code><a href="https://github.com/idiocc/idio/wiki/Home#type-context" title="The extension to the standard Goa context with properties set by middleware.">!Context</a></code></em>: The app context.<br/>
    <kbd><strong>error*</strong></kbd> <em><code>string</code></em>: The error type.<br/>
    <kbd><strong>description*</strong></kbd> <em><code>string</code></em>: The explanation of the error.<br/>
    <kbd><strong>next*</strong></kbd> <em><code>function()</code></em>: Calls next middleware.
@@ -133,45 +134,51 @@ __<a name="type-githuboauthconfig">`GithubOAuthConfig`</a>__: Options for the pr
 </table>
 
 ```jsx
-import github from '@idio/github'
+import github from '..'
 import idio from '@idio/idio'
 
 const Server = async () => {
-  const { url, app, middleware: {
+  const { url, app, router, middleware: {
     session,
   } } = await idio({
     session: {
       keys: [process.env.SESSION_KEY],
     },
-    async index(ctx, next) {
-      if (ctx.path != '/') return next()
-      ctx.body = render(<html>
-        <body>
-          {ctx.session.user ? ctx.session.user :
-            <a href="/auth/github">Sign In With GitHub</a>}
-          <hr/>
-          (c) Art Deco, 2019
-        </body>
-      </html>, { addDoctype: true })
-    },
-    async signout(ctx, next) {
-      if (ctx.path != '/signout') return next()
-      ctx.session = null
-      ctx.redirect('/')
-    },
-  }, { port: 5003 })
+  })
+
+  router.get('/', session, (ctx) => {
+    ctx.body = render(<html>
+      <body>
+        {ctx.session.user ?
+          <span>Hello, {ctx.session.user}.{' '}
+            <a href="/signout">Sign Out</a>
+          </span> :
+          <a href="/github">Sign In With GitHub</a>}
+        <hr/>
+        (c) Art Deco, 2020
+      </body>
+    </html>, { addDoctype: true })
+  })
+  router.get('/signout', session, (ctx) => {
+    ctx.session = null
+    ctx.redirect('/')
+  })
+  app.use(router.routes())
 
   github(app, {
     session,
     client_id: process.env.CLIENT_ID,
     client_secret: process.env.CLIENT_SECRET,
-    scope: '',
+    scope: 'user:email',
     error(ctx, error) {
       ctx.redirect(`/?error=${error}`)
     },
+    path: '/github',
     async finish(ctx, token, scope, user, next) {
       console.log(user.name, user.login, user.company)
-      await next()
+      ctx.session.user = user.login
+      ctx.session.manuallyCommit()
+      ctx.redirect('/')
     },
   })
   return { app, url }
@@ -179,30 +186,75 @@ const Server = async () => {
 ```
 ```
 [+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY 
-http://localhost:5003 
-{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=6608">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&amp;state=6608</a>.',
+http://localhost:5000 
+{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=1601&amp;scope=user%3Aemail">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=1601&amp;scope=user%3Aemail</a>.',
   headers: 
    { 'set-cookie': 
-      [ 'koa:sess=eyJnaXRoaWItc3RhdGUiOjY2MDgsIl9leHBpcmUiOjE1Nzk3ODEzODM4NDcsIl9tYXhBZ2UiOjg2NDAwMDAwfQ==; path=/; expires=Thu, 23 Jan 2020 12:09:43 GMT; httponly',
-        'koa:sess.sig=I2p_Ct3Oquav6ZXYL3IjihWLHLw; path=/; expires=Thu, 23 Jan 2020 12:09:43 GMT; httponly' ],
-     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=6608',
+      [ 'koa:sess=eyJnaXRoaWItc3RhdGUiOjE2MDEsIl9leHBpcmUiOjE1Nzk3OTExOTg4OTgsIl9tYXhBZ2UiOjg2NDAwMDAwfQ==; path=/; expires=Thu, 23 Jan 2020 14:53:18 GMT; httponly',
+        'koa:sess.sig=_h81q_9ATiROYJ7LzpKLTE1ZMm8; path=/; expires=Thu, 23 Jan 2020 14:53:18 GMT; httponly' ],
+     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=1601&scope=user%3Aemail',
      'content-type': 'text/html; charset=utf-8',
-     'content-length': '359',
-     date: 'Wed, 22 Jan 2020 12:09:43 GMT',
+     'content-length': '391',
+     date: 'Wed, 22 Jan 2020 14:53:18 GMT',
      connection: 'close' },
   statusCode: 302,
   statusMessage: 'Found' }
 
- > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5003%2Fauth%2Fgithub%2Fredirect&state=6608
+ > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=1601&scope=user%3Aemail
 ```
 
-<p align="center"><a href="#table-of-contents">
-  <img src="/.documentary/section-breaks/2.svg?sanitize=true">
-</a></p>
-
-## GithubUser
-
 If authorisation was successful, the server will make a request to GitHub API at `/user` path with the token, to get user's public info. This information can then be accessed in the `finish` function passed in the config.
+
+If the `user:email` scope was requested, emails returned from the `/user/emails` API path will also be populated in the `emails` field. If the user's main email is private, it won't be visible in the `email` field, so that this scope should be requested if the email address needs to be collected.
+
+__<a name="type-githubemail">`GithubEmail`</a>__
+<table>
+ <thead><tr>
+  <th>Name</th>
+  <th>Type &amp; Description</th>
+ </tr></thead>
+ <tr>
+  <td rowSpan="3" align="center"><strong>email*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   The email address.
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>verified*</strong></td>
+  <td><em>boolean</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   Whether the email was verified.
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>primary*</strong></td>
+  <td><em>boolean</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   Whether the email is primary.
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>visibility*</strong></td>
+  <td><em>string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   Either <code>public</code> or <code>private</code>.
+  </td>
+ </tr>
+</table>
+
 
 __<a name="type-githubuser">`GithubUser`</a>__: Public user information
 <table>
@@ -210,6 +262,26 @@ __<a name="type-githubuser">`GithubUser`</a>__: Public user information
   <th>Name</th>
   <th>Type &amp; Description</th>
  </tr></thead>
+ <tr>
+  <td rowSpan="3" align="center"><strong>email*</strong></td>
+  <td><em>?string</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   Publicly visible email address. <code>octocat＠github.com</code> or <code>null</code>.
+  </td>
+ </tr>
+ <tr>
+  <td rowSpan="3" align="center"><strong>emails*</strong></td>
+  <td><em>!Array&lt;<a href="#type-githubemail">!GithubEmail</a>&gt;</em></td>
+ </tr>
+ <tr></tr>
+ <tr>
+  <td>
+   All email addresses accessible if the <code>user:email</code> scope was requested.
+  </td>
+ </tr>
  <tr>
   <td rowSpan="3" align="center"><strong>login*</strong></td>
   <td><em>string</em></td>
@@ -431,16 +503,6 @@ __<a name="type-githubuser">`GithubUser`</a>__: Public user information
   </td>
  </tr>
  <tr>
-  <td rowSpan="3" align="center"><strong>email*</strong></td>
-  <td><em>?string</em></td>
- </tr>
- <tr></tr>
- <tr>
-  <td>
-   Publicly visible email address. <code>octocat＠github.com</code> or <code>null</code>.
-  </td>
- </tr>
- <tr>
   <td rowSpan="3" align="center"><strong>hireable*</strong></td>
   <td><em>boolean</em></td>
  </tr>
@@ -522,8 +584,26 @@ __<a name="type-githubuser">`GithubUser`</a>__: Public user information
  </tr>
 </table>
 
+A custom implementation of the  `finish` function can be provided, only that `session` must be manually committed after being set.
+
+```js
+/**
+ * @param {!_idio.Context} ctx
+ * @param {string} token
+ * @param {string} scope
+ * @param {!_idio.GithubUser} user
+ */
+export const defaultFinish = async (ctx, token, scope, user, next) => {
+  ctx.session['token'] = token
+  ctx.session['scope'] = scope
+  ctx.session['user'] = user
+  await ctx.session.manuallyCommit()
+  ctx.redirect('/')
+}
+```
+
 <p align="center"><a href="#table-of-contents">
-  <img src="/.documentary/section-breaks/3.svg?sanitize=true">
+  <img src="/.documentary/section-breaks/2.svg?sanitize=true">
 </a></p>
 
 ## Copyright

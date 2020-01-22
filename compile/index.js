@@ -1,4 +1,4 @@
-const { _github } = require('./')
+const { _github } = require('./github')
 
 /**
  * The GitHub OAuth Login Routes For The Idio Web Server. Two routes will be configured: one to redirect to GitHub to start authentication, and one to handle the callback from GitHub. They will be installed on the app automatically.

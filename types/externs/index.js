@@ -54,44 +54,34 @@ _idio.GithubOAuthConfig.prototype.error = function(ctx, error, description, next
  */
 _idio.githubOAuth
 
-/* typal types/index.xml namespace */
+/* typal types/github.xml namespace */
 /**
- * Options for the program.
+ * The response from GitHub for OAuth code exchange request.
  * @record
  */
-_idio.GithubOAuthConfig
+_idio.GithubExchangeResponse
 /**
- * The app's client id.
+ * The error title.
  * @type {string}
  */
-_idio.GithubOAuthConfig.prototype.client_id
+_idio.GithubExchangeResponse.prototype.error
 /**
- * The app's client secret.
+ * The error description.
  * @type {string}
  */
-_idio.GithubOAuthConfig.prototype.client_secret
+_idio.GithubExchangeResponse.prototype.error_description
 /**
- * The server path to start the login flaw at and use for redirect (`${path}/redirect`). Default `/auth/github`.
- * @type {string|undefined}
+ * The received token.
+ * @type {string}
  */
-_idio.GithubOAuthConfig.prototype.path
+_idio.GithubExchangeResponse.prototype.access_token
 /**
- * The scope to ask permissions for. No scope by default.
- * @type {string|undefined}
+ * The scope.
+ * @type {string}
  */
-_idio.GithubOAuthConfig.prototype.scope
+_idio.GithubExchangeResponse.prototype.scope
 /**
- * The configured session middleware in case the `session` property is not globally available on the context.
- * @type {(!_goa.Middleware)|undefined}
+ * The type, i.e. `bearer`.
+ * @type {string}
  */
-_idio.GithubOAuthConfig.prototype.session
-/**
- * The function to complete the authentication that receives the token and the data about the user, such as name and id. The default function redirects to `/`. Default `setSession; redirect;`.
- * @type {(function(_idio.Context,string,string,!_idio.GithubUser,function()): !Promise)|undefined}
- */
-_idio.GithubOAuthConfig.prototype.finish = function(ctx, token, scope, user, next) {}
-/**
- * The function to be called in case of error. If not specified, the middleware will throw an internal server error. Default `throw;`.
- * @type {(function(!_idio.Context,string,string,function()): !Promise)|undefined}
- */
-_idio.GithubOAuthConfig.prototype.error = function(ctx, error, description, next) {}
+_idio.GithubExchangeResponse.prototype.token_type

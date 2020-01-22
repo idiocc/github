@@ -3,7 +3,7 @@ import dotenv from '@demimonde/dotenv'
 import render from '@depack/render'
 dotenv()
 /* start example */
-import github from '../src'
+import github from '..'
 import idio from '@idio/idio'
 
 const Server = async () => {

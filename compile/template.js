@@ -1,4 +1,4 @@
-const { _github } = require('./')
+const { _github } = require('./github')
 
 /**
  * @methodType {_idio.githubOAuth}

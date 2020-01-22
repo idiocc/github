@@ -9,6 +9,7 @@ export const defaultFinish = async (ctx, token, scope, user, next) => {
   ctx.session['token'] = token
   ctx.session['scope'] = scope
   ctx.session['user'] = user
+  await ctx.session.manuallyCommit()
   ctx.redirect('/')
 }
 /* end example */
