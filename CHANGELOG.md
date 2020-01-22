@@ -1,5 +1,9 @@
 ## 22 January 2020
 
+### [1.2.0](https://github.com/idiocc/github/compare/v1.1.0...v1.2.0)
+
+- [package] Compile package with _Depack_.
+
 ### [1.1.0](https://github.com/idiocc/github/compare/v1.0.4...v1.1.0)
 
 - [doc] Add annotations and publish whole _types_ dir.
