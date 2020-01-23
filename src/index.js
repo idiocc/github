@@ -95,7 +95,7 @@ function $github(app, config) {
     if (ctx.path == path) {
       if (session) await session(ctx, () => {})
       await start(ctx)
-    } else if (ctx.path.startsWith(redirectPath)) {
+    } else if (ctx.path == redirectPath) {
       if (session) await session(ctx, () => {})
       await redirect(ctx, next)
     } else return next()

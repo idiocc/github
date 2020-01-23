@@ -1,3 +1,10 @@
+## 23 January 2020
+
+### [1.4.0](https://github.com/idiocc/github/compare/v1.3.0...v1.4.0)
+
+- [fix] Check exact redirect path.
+- [license] Update to AGPL3.
+
 ## 22 January 2020
 
 ### [1.3.0](https://github.com/idiocc/github/compare/v1.2.0...v1.3.0)
