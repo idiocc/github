@@ -198,20 +198,24 @@ const Server = async () => {
 ```
 [+] CLIENT_ID [+] CLIENT_SECRET [+] SESSION_KEY 
 http://localhost:5000 
-{ body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=6306&amp;scope=user%3Aemail">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=6306&amp;scope=user%3Aemail</a>.',
-  headers: 
-   { 'set-cookie': 
-      [ 'koa:sess=eyJnaXRoaWItc3RhdGUiOjYzMDYsIl9leHBpcmUiOjE1Nzk3OTQwNTUzMDcsIl9tYXhBZ2UiOjg2NDAwMDAwfQ==; path=/; expires=Thu, 23 Jan 2020 15:40:55 GMT; httponly',
-        'koa:sess.sig=YJZ4qgusVt37PvCylZXaqQd4ykA; path=/; expires=Thu, 23 Jan 2020 15:40:55 GMT; httponly' ],
-     location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=6306&scope=user%3Aemail',
-     'content-type': 'text/html; charset=utf-8',
-     'content-length': '391',
-     date: 'Wed, 22 Jan 2020 15:40:55 GMT',
-     connection: 'close' },
+{
+  body: 'Redirecting to <a href="https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=8275&amp;scope=user%3Aemail">https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&amp;redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&amp;state=8275&amp;scope=user%3Aemail</a>.',
+  headers: {
+    'set-cookie': [
+      'koa:sess=eyJnaXRoaWItc3RhdGUiOjgyNzUsIl9leHBpcmUiOjE1ODI4OTY0NTk1OTIsIl9tYXhBZ2UiOjg2NDAwMDAwfQ==; path=/; expires=Fri, 28 Feb 2020 13:27:39 GMT; httponly',
+      'koa:sess.sig=mPZuFR0kFz8XFkQRJeuTm3VnMfw; path=/; expires=Fri, 28 Feb 2020 13:27:39 GMT; httponly'
+    ],
+    location: 'https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=8275&scope=user%3Aemail',
+    'content-type': 'text/html; charset=utf-8',
+    'content-length': '391',
+    date: 'Thu, 27 Feb 2020 13:27:39 GMT',
+    connection: 'close'
+  },
   statusCode: 302,
-  statusMessage: 'Found' }
+  statusMessage: 'Found'
+}
 
- > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=6306&scope=user%3Aemail
+ > Redirect to Dialog https://www.github.com/login/oauth/authorize?client_id=f0a8762e7329780e85de&redirect_uri=http%3A%2F%2Flocalhost%3A5000%2Fgithub%2Fredirect&state=8275&scope=user%3Aemail
 ```
 
 If authorisation was successful, the server will make a request to GitHub API at `/user` path with the token, to get user's public info. This information can then be accessed in the `finish` function passed in the config.
@@ -628,24 +632,17 @@ Please refer to the [Idio license agreement](https://github.com/idiocc/idio#copy
 <table>
   <tr>
     <th>
-      <a href="https://artd.eco">
+      <a href="https://www.artd.eco">
         <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
           alt="Art Deco">
       </a>
     </th>
-    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2020</th>
+    <th>© <a href="https://www.artd.eco">Art Deco™</a> for <a href="https://idio.cc">Idio</a> 2020</th>
     <th>
       <a href="https://idio.cc">
         <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio">
       </a>
     </th>
-    <th>
-      <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
-          alt="Tech Nation Visa">
-      </a>
-    </th>
-    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
   </tr>
 </table>
 
