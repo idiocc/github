@@ -24,7 +24,8 @@
   "files": [
     "compile",
     "src",
-    "types"
+    "types",
+    "typedefs.json"
   ],
   "externs": [
     "types/externs/user.js",
@@ -34,7 +35,7 @@
     "type": "git",
     "url": "git://github.com/idiocc/github.git"
   },
-  "typedefs": "types/typedefs.json",
+  "typedefs": "typedefs.json",
   "keywords": [
     "github",
     "idio",
